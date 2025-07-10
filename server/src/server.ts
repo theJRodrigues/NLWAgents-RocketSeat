@@ -7,6 +7,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { env } from './env.ts'
 import {
+  createRoomQuestionRoute,
   createRoomRoute,
   getRoomQuestionsRoute,
   getRoomsRoute,
@@ -20,9 +21,10 @@ app.register(fastifyCors, {
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
 
-app.register(createRoomRoute)
 app.register(getRoomsRoute)
 app.register(getRoomQuestionsRoute)
+app.register(createRoomRoute)
+app.register(createRoomQuestionRoute)
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('server running')
