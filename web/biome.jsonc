@@ -10,6 +10,9 @@
   },
   "linter": {
     "rules": {
+      "performance": {
+        "noNamespaceImport": "off"
+      },
       "nursery": {
         "noUnknownAtRule": "off"
       }
