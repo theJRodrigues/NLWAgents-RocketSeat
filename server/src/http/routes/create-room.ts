@@ -21,8 +21,7 @@ export const createRoomRoute: FastifyPluginCallbackZod = (app) => {
           .insert(schema.rooms)
           .values({ name, description })
           .returning()
-
-        return reply.status(201).send(`Room Id: ${result[0].id}`)
+        return reply.status(201).send({ id: result[0].id })
       } catch (error) {
         return reply.status(500).send(`Error: ${error}`)
       }

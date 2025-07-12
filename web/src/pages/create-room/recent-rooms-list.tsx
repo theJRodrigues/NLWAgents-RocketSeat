@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/card'
 import { useGetRooms } from '@/http/use-get-rooms'
 
-const RecenteRoomsList = () => {
+const RecentRoomsList = () => {
   const { rooms, isLoading } = useGetRooms()
 
   const relativeDate = (date: string) => {
@@ -20,7 +20,7 @@ const RecenteRoomsList = () => {
     return result
   }
   return (
-    <Card className="max-w-2xl bg-zinc-900">
+    <Card className="w-full bg-zinc-900">
       <CardHeader>
         <CardTitle>Salas Recentes</CardTitle>
         <CardDescription>
@@ -39,7 +39,7 @@ const RecenteRoomsList = () => {
             >
               <div className="flex flex-col gap-2">
                 <strong>{room.name}</strong>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2 md:flex-nowrap">
                   <Badge variant="secondary">
                     {relativeDate(room.createdAt)}
                   </Badge>
@@ -58,4 +58,4 @@ const RecenteRoomsList = () => {
   )
 }
 
-export default RecenteRoomsList
+export default RecentRoomsList
