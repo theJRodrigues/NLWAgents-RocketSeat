@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { GetRoomsAPIResponse } from './types/get-rooms-response'
 import type { PostRoomAPI } from './types/post-room'
 
 export const usePostRoom = () => {

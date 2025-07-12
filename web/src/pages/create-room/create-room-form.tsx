@@ -29,7 +29,7 @@ const CreateRoomForm = () => {
     resolver: zodResolver(formSchema),
   })
 
-  const { mutateAsync } = usePostRoom()
+  const { mutateAsync, isPending } = usePostRoom()
 
   const onSubmit = async ({ name, description }: formData) => {
     await mutateAsync({ name, description })
@@ -72,7 +72,11 @@ const CreateRoomForm = () => {
             </FormItem>
           )}
         />
-        <Button className="w-full cursor-pointer" type="submit">
+        <Button
+          className="w-full cursor-pointer"
+          disabled={isPending}
+          type="submit"
+        >
           Criar sala
         </Button>
       </form>
