@@ -13,7 +13,7 @@ import {
 import { useGetRooms } from '@/http/use-get-rooms'
 
 const RecentRoomsList = () => {
-  const { rooms, isLoading } = useGetRooms()
+  const { rooms, isLoading, isError } = useGetRooms()
 
   const relativeDate = (date: string) => {
     const result = formatDistanceToNow(date, { locale: ptBR, addSuffix: false })
@@ -30,6 +30,8 @@ const RecentRoomsList = () => {
       <CardContent className="flex flex-col gap-4">
         {isLoading ? (
           <strong>Carregando...</strong>
+        ) : isError ? (
+          <strong>Erro ao carregar salas</strong>
         ) : (
           rooms?.map((room) => (
             <Link

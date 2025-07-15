@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { Bot, Loader2, MessageSquare } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -16,11 +17,16 @@ interface QuestionItemProps {
 export function QuestionItem({ question }: QuestionItemProps) {
   const isGenerating = !question.answer
 
+  const createdAt = new Date(question.createdAt)
+  const formattedCreatedAt = formatDistanceToNow(createdAt, {
+    addSuffix: true,
+    locale: ptBR,
+  })
+
   return (
     <Card>
       <CardContent>
         <div className="space-y-4">
-          {/* Question */}
           <div className="flex items-start space-x-3">
             <div className="flex-shrink-0">
               <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
@@ -28,9 +34,11 @@ export function QuestionItem({ question }: QuestionItemProps) {
               </div>
             </div>
             <div className="flex-1">
-              <p className="mb-1 font-medium text-foreground">Pergunta</p>
+              <p className="mb-1 font-medium text-foreground">
+                Pergunta {question.question}
+              </p>
               <p className="whitespace-pre-line text-muted-foreground text-sm leading-relaxed">
-                {question.question}
+                {question.answer}
               </p>
             </div>
           </div>
@@ -62,7 +70,7 @@ export function QuestionItem({ question }: QuestionItemProps) {
 
           <div className="flex justify-end">
             <span className="text-muted-foreground text-xs">
-              {formatDistanceToNow(question.createdAt)}
+              {formattedCreatedAt}
             </span>
           </div>
         </div>

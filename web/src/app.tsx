@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import CreateRoom from './pages/create-room/create-room'
-import Room from './pages/room'
+import Room from './pages/room/room'
 
 const queryClient = new QueryClient()
 
